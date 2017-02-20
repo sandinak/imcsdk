@@ -422,11 +422,8 @@ def sol_setup(handle, speed, comport, ssh_port, server_id=1):
         "admin_state": SolIfConsts.ADMIN_STATE_ENABLE,
         "speed": str(speed),
         "comport": comport,
+        "ssh_port": str(ssh_port),
     }
-
-    version = int(handle.version())
-    if version >= 3: 
-        params["ssh_port"] = str(ssh_port),
 
     solif_mo.set_prop_multiple(**params)
     handle.set_mo(solif_mo)
